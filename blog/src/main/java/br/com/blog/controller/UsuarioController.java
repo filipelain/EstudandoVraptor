@@ -10,14 +10,16 @@ import br.com.blog.model.Usuario;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.caelum.vraptor.validator.Validator;
 
 @Controller
 public class UsuarioController {
 
-	private UsuarioDAO dao;
+	
 	private Result result;
 	private Validator validator;
+	private UsuarioDAO dao;
 
 	@Inject
 	public UsuarioController(UsuarioDAO dao, Result result, Validator validator) {
@@ -30,25 +32,20 @@ public class UsuarioController {
 		// TODO Auto-generated constructor stub
 	}
 
-
+	@Path("/form")
 	public void form() {
 	}
 
-	public void novo(@Valid Usuario usuario) {
+	@IncludeParameters
+	public void adciona(@Valid Usuario usuario) {
 		validator.onErrorRedirectTo(this).form();
 		dao.novo(usuario);
 		result.redirectTo(this).lista();
 	}
 
-
+	@Path("/lista")
 	public void lista() {
-	List<Usuario> usuario = dao.lista();
-		result.include("usuario", usuario);
-	}
-	
-	@Path("/ulista")
-	public void ulista() {
-		List<Usuario> usuario = dao.lista();
-		result.include("usuario", usuario);
+		List<Usuario> usuarios = dao.lista();
+		result.include("usuarios", usuarios);
 	}
 }

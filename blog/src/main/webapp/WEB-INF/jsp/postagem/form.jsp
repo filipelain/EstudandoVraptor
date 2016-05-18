@@ -2,36 +2,24 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
-<form action="${linkTo[UsuarioController].novo(null)}" method="POST">
+<form action="${linkTo[PostagemController].novaPostagem(null)}" method="post">
 	<fieldset>
+		<legend>Nova Postagem</legend>
 		<div class="row">
-			<div class="medium-12 columns ">
-				<label>Nome <input value="${usuario.nome}" type="text"
-					placeholder="Seu Nome" name="usuario.nome" required> <small>${errors.from("usuario.nome")}</small>
-				</label>
+			<div class="large-12 columns">
+				<label>Titulo <input type="text" value="${postagem.titulo}" name="postagem.titulo" />
+				</label> <small>${errors.from("postagem.titulo")}</small>
 			</div>
-			<div class="medium-12 columns">
-				<label>E-mail <input value="${usuario.email}" type="email"
-					placeholder="Seu E-mail" name="usuario.email" required> <small>${errors.from("usuario.email")}</small>
-				</label>
+			<div class="large-12 columns">
+				<label>Postagem<input type="text" value="${postagem.postagem}" name="postagem.postagem" />
+				</label> <small>${errors.from("postagem.postagem")}</small>
 			</div>
-			<div class="medium-12 columns">
-				<label>Senha <input type="password" placeholder="Sua senha"
-					name="usuario.senha" required> <small>${errors.from("usuario.senha")}</small>
-				</label>
-			</div>
-
-			<div class="medium-12 columns">
-				<input type="submit" class="large button" value="Cadastrar" />
-			</div>
+		</div>
+		<div class="large-12 columns">
+			<input type="submit" value="Enviar" />
 		</div>
 	</fieldset>
 </form>
-
-
-
-
-
 
 
 

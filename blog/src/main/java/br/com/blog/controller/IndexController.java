@@ -9,20 +9,22 @@ import br.com.caelum.vraptor.Result;
 @Controller
 public class IndexController {
 
-	private Result result;
-	private UsuarioController usuarioController;
+	private final Result result;
 
-	
+	/**
+	 * @deprecated CDI eyes only
+	 */
+	protected IndexController() {
+		this(null);
+	}
 	
 	@Inject
-	public IndexController(Result result, UsuarioController usuarioController) {
+	public IndexController(Result result) {
 		this.result = result;
-		this.usuarioController = usuarioController;
 	}
-	public IndexController() {}
 
 	@Path("/")
 	public void index() {
-		usuarioController.ulista();
+		result.include("variable", "VRaptor!");
 	}
 }

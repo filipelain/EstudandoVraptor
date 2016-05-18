@@ -16,6 +16,9 @@ public class PostagemDao {
 	public PostagemDao( EntityManager manager) {
 		this.manager = manager;
 	}
+	public PostagemDao() {
+		
+	}
 	
 	
 	
