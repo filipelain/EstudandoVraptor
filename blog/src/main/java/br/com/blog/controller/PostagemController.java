@@ -1,10 +1,15 @@
 package br.com.blog.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+
+
 
 import br.com.blog.DAO.PostagemDao;
 import br.com.blog.model.Postagem;
@@ -39,10 +44,16 @@ public class PostagemController {
 	public void form() {
 	}
 
-	public void novaPostagem(@Valid Postagem postagem) {
+	public void novapostagem(@Valid Postagem postagem) {
 		validator.onErrorRedirectTo(this).form();
 		postagem.setUsuario(logado.getUsuario());
-		postagem.setDataPost(Calendar.getInstance());
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar c = Calendar.getInstance();
+		String d = dateFormat.format(new Date());
+		try {
+			c.setTime(dateFormat.parse((d)));
+		} catch (Exception e) {}
+		postagem.setDataPost(c);
 		dao.novoPost(postagem);  
 		result.redirectTo(this).lista();
 	}

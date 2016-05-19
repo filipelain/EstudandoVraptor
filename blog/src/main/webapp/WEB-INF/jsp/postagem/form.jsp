@@ -2,7 +2,7 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
-<form action="${linkTo[PostagemController].novaPostagem(null)}" method="post">
+<form action="${linkTo[PostagemController].novapostagem(null)}" method="post">
 	<fieldset>
 		<legend>Nova Postagem</legend>
 		<div class="row">

@@ -9,16 +9,22 @@
 <title>Blog</title>
 </head>
 <body>
-
-	<ul class="menu">
-		<li><a href="${linkTo[IndexController].index()}">Home</a></li>
-		<li><a href="${linkTo[UsuarioController].form()}">Usuarios</a></li>
-		<li><a href="${linkTo[UsuarioController].lista()}">Lista de usuario</a></li>
-		<li><a href="${linkTo[PostagemController].form()}">Nova postagem</a></li>
-		<li><a href="${linkTo[PostagemController].lista()}">Lista de pestogem</a> </li>
-		<c:if test="${usuarioLogado.logged}">
-		   <li><a href="${linkTo[LoginController].logout()}">SAIR</a></li>
-		</c:if>
-	</ul>
-	<hr>
-	
+	<div class="top-bar">
+		<div class="top-bar-left">
+			<ul class="menu">
+				<li class="menu-text"><a
+					href="${linkTo[IndexController].index()}">Home</a></li>
+				<li><a href="${linkTo[UsuarioController].form()}">Usuarios</a></li>
+				<li><a href="${linkTo[UsuarioController].lista()}">Lista de
+						usuario</a></li>
+				<li><a href="${linkTo[PostagemController].form()}">Nova
+						postagem</a></li>
+				<li><a href="${linkTo[PostagemController].lista()}">Lista
+						de pestogem</a></li>
+				<c:if test="${usuarioLogado.logged}">
+					<li><a href="${linkTo[LoginController].logout()}">SAIR</a></li>
+					<li>Ola ${usuarioLogado.usuario.nome}</li>
+				</c:if>
+			</ul>
+		</div>
+	</div>

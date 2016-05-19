@@ -22,7 +22,7 @@ public class Postagem {
 	@NotEmpty
 	private String titulo;
 	
-	@NotEmpty
+	
 	@Temporal(TemporalType.DATE)  
 	private Calendar dataPost;
 	

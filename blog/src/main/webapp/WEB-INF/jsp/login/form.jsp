@@ -8,7 +8,7 @@
 		<form action="${linkTo[LoginController].autentica(null,null)}"
 			method="post">
 			<fieldset>
-				<legend>Login</legend>
+			
 				<small>${errors.from("login_invalido")}</small>
 				<div class="medium-10 columns">
 					<label>Nome<input type="text" placeholder="Seu Usuario"
@@ -21,7 +21,7 @@
 					</label>
 				</div>
 				<div class="medium-10 columns">
-					<input type="submit" class="large button" value="ENTRAR" />
+					<input type="submit" class="expanded button" value="ENTRAR" />
 				</div>
 			</fieldset>
 		</form>
