@@ -2,7 +2,7 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
-<form action="${linkTo[UsuarioController].novo(null)}" method="POST">
+<form action="${linkTo[UsuarioController].adciona(null)}" method="POST">
 	<fieldset>
 		<div class="row">
 			<div class="medium-12 columns ">

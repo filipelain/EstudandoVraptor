@@ -21,6 +21,10 @@
 						postagem</a></li>
 				<li><a href="${linkTo[PostagemController].lista()}">Lista
 						de pestogem</a></li>
+			</ul>
+		</div>
+		<div class="top-bar-right">
+			<ul class="menu">
 				<c:if test="${usuarioLogado.logged}">
 					<li><a href="${linkTo[LoginController].logout()}">SAIR</a></li>
 					<li>Ola ${usuarioLogado.usuario.nome}</li>
