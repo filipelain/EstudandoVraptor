@@ -37,6 +37,29 @@ public class PostagemDao {
 	 TypedQuery<Postagem> query = manager.createQuery("select p from Postagem p",Postagem.class);
 	 return query.getResultList();
 	}
+	public Postagem getpostagem(int id) {
+		System.out.println("O lavor passado é: " + id);
+		     TypedQuery<Postagem> query = manager.createQuery("select p from Postagem p where p.id =:id ", Postagem.class);
+		      query.setParameter("id",id);
+		  try {
+			  return query.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}    
+		
+	}
+	public List<Postagem> listaPorAutor(int id) {
+		     TypedQuery<Postagem> query = manager.createQuery("select p from Postagem p where p.usuario =:autor ", Postagem.class);
+		     query.setParameter("autor", id);
+		return query.getResultList();
+	}
+	public void alteraPost(Postagem postagem) {
+		manager.getTransaction().begin();
+		manager.merge(postagem);
+		manager.getTransaction().commit();
+		
+		
+	}
 	
 
 

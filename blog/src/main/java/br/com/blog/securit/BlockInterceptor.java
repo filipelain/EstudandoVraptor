@@ -2,6 +2,7 @@ package br.com.blog.securit;
 
 import javax.inject.Inject;
 
+import br.com.blog.controller.IndexController;
 import br.com.blog.controller.LoginController;
 import br.com.caelum.vraptor.Accepts;
 import br.com.caelum.vraptor.AroundCall;
@@ -38,7 +39,7 @@ public class BlockInterceptor {
 		if (logado.isLogged()) {
 			stack.next();
 		} else {
-			result.redirectTo(LoginController.class).form();
+			result.redirectTo(IndexController.class).index();
 		}
 	}
 

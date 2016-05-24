@@ -28,6 +28,7 @@ public class Postagem {
 	
 	@ManyToOne
 	private Usuario usuario;
+	
 	public int getId() {
 		return id;
 	}

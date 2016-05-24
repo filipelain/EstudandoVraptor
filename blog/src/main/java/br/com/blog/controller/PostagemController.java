@@ -13,9 +13,11 @@ import javax.validation.Valid;
 
 import br.com.blog.DAO.PostagemDao;
 import br.com.blog.model.Postagem;
+import br.com.blog.securit.Open;
 import br.com.blog.securit.UsuarioLogado;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.caelum.vraptor.validator.Validator;
 
 
@@ -43,7 +45,25 @@ public class PostagemController {
 
 	public void form() {
 	}
-
+	
+	public void editform(int id){
+		
+	Postagem postagem	= dao.getpostagem(id);
+		result.include(postagem);
+	}
+	
+	@IncludeParameters
+	public void editapostagem(@Valid Postagem postagem)
+	{
+		int id = postagem.getId();
+		postagem.setUsuario(logado.getUsuario());
+		validator.onErrorRedirectTo(this).editform(id);
+		dao.alteraPost(postagem);
+		result.redirectTo(this).exibepostagem(id);
+		
+	}
+	
+	@IncludeParameters
 	public void novapostagem(@Valid Postagem postagem) {
 		validator.onErrorRedirectTo(this).form();
 		postagem.setUsuario(logado.getUsuario());
@@ -57,10 +77,21 @@ public class PostagemController {
 		dao.novoPost(postagem);  
 		result.redirectTo(this).lista();
 	}
-
 	public void lista() {
-		List<Postagem> postagems = dao.ListPost();
-		result.include("postagems", postagems);
+		List<Postagem> postagens = dao.ListPost();
+		result.include("postagens", postagens);
+	}
+	@Open
+	public void listaporautor(int id)
+	{
+		List<Postagem> postagens = dao.listaPorAutor(id);
+		result.include("postagens", postagens);
+	}
+	@Open
+	public void exibepostagem(int id)
+	{
+		Postagem postagem = dao.getpostagem(id);
+		result.include(postagem);
 	}
 
 }

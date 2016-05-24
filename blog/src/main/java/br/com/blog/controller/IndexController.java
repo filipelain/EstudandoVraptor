@@ -1,7 +1,12 @@
 package br.com.blog.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import br.com.blog.DAO.PostagemDao;
+import br.com.blog.model.Postagem;
+import br.com.blog.securit.Open;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
@@ -9,22 +14,23 @@ import br.com.caelum.vraptor.Result;
 @Controller
 public class IndexController {
 
-	private final Result result;
+	private Result result;
+	private PostagemDao dao;
 
-	/**
-	 * @deprecated CDI eyes only
-	 */
-	protected IndexController() {
-		this(null);
-	}
-	
 	@Inject
-	public IndexController(Result result) {
+	public IndexController(Result result, PostagemDao dao) {
 		this.result = result;
+		this.dao = dao;
 	}
 
+	public IndexController() {
+
+	}
+
+	@Open
 	@Path("/")
 	public void index() {
-		result.include("variable", "VRaptor!");
+		List<Postagem> postagens = dao.ListPost();
+		result.include("postagens", postagens);
 	}
 }
