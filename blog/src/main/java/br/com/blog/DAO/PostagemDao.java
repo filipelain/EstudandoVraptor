@@ -49,7 +49,7 @@ public class PostagemDao {
 		
 	}
 	public List<Postagem> listaPorAutor(int id) {
-		     TypedQuery<Postagem> query = manager.createQuery("select p from Postagem p where p.usuario =:autor ", Postagem.class);
+		     TypedQuery<Postagem> query = manager.createQuery("select p from Postagem p where p.usuario.id =:autor ", Postagem.class);
 		     query.setParameter("autor", id);
 		return query.getResultList();
 	}

@@ -12,7 +12,7 @@
 				<small><fmt:formatDate pattern="dd-MM-yyyy"
 						value="${postagens.dataPost.getTime()}" /></small>
 			</h3>
-			<img class="thumbnail" src="http://placehold.it/850x350">
+			<img class="thumbnail" src="${linkTo[PostagemController].capa}?id=${postagens.id}">
 			<p>${postagens.postagem}</p>
 			<div class="callout">
 				<ul class="menu simple">

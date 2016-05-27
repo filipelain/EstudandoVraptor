@@ -6,6 +6,7 @@
 <link href="<c:url value='/resources/css/foundation.css'/>"
 	rel="stylesheet" />
 <link href="<c:url value='/resources/css/app.css'/>" rel="stylesheet" />
+<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
 <title>Blog</title>
 </head>
 <body>
@@ -28,6 +29,9 @@
 				<c:if test="${usuarioLogado.logged}">
 					<li><a href="${linkTo[LoginController].logout()}">SAIR</a></li>
 					<li>Ola ${usuarioLogado.usuario.nome}</li>
+				</c:if>
+				<c:if test="${!usuarioLogado.logged}">
+				<li><a class="button" href="${linkTo[LoginController].form()}">Login</a></li>
 				</c:if>
 			</ul>
 		</div>

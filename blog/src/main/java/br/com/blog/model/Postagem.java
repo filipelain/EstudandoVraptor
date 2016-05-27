@@ -1,5 +1,6 @@
 package br.com.blog.model;
 
+import java.net.URI;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
@@ -21,11 +22,9 @@ public class Postagem {
 	private String postagem;
 	@NotEmpty
 	private String titulo;
-	
-	
 	@Temporal(TemporalType.DATE)  
 	private Calendar dataPost;
-	
+	private String capa;
 	@ManyToOne
 	private Usuario usuario;
 	
@@ -58,6 +57,14 @@ public class Postagem {
 	}
 	public void setDataPost(Calendar dataPost) {
 		this.dataPost = dataPost;
+	}
+	public URI getCapa() {
+		if(capa == null)return null;
+		return URI.create(capa);
+	}
+	public void setCapa(URI capa) {
+		
+		this.capa = capa == null ? null :capa.toString();
 	}
 
 }

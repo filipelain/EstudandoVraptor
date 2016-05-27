@@ -6,5 +6,13 @@
 <script src="<c:url value='/resources/js/vendor/what-input.js'/>"></script>
 <script src="<c:url value='/resources/js/vendor/foundation.js'/>"></script>
 <script src="<c:url value='/resources/js/app.js'/>"></script>
+
+ <script>
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+  </script>
+  
+
 </body>
 </html>
